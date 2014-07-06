@@ -2,7 +2,9 @@
 <widget id="com.stevehusting.CordovaAPI\"
 		 version="0.0.1"
 		 xmlns="http://www.w3.org/ns/widgets" 
-		 xmlns:cdv="http://cordova.apache.org/ns/1.0">
+		 
+		 xmlns:cdv="http://cordova.apache.org/ns/1.0"
+		 xmlns:gap   = "http://phonegap.com/ns/1.0">
 		 
     <name>Workshop2</name>
     <description>
@@ -13,5 +15,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<gap:plugin name="com.performanceactive.plugins.camera" />
 	<feature name="org.apache.cordova.camera"/>
 </widget>
+
+
