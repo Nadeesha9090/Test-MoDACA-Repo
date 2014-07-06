@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.stevehusting.CordovaAPI\"
+<widget id="com.stevehusting.CordovaAPI"
 		 version="0.0.1"
 		 xmlns="http://www.w3.org/ns/widgets" 
 		 
 		 xmlns:cdv="http://cordova.apache.org/ns/1.0"
 		 xmlns:gap   = "http://phonegap.com/ns/1.0">
 		 
-    <name>Workshop2</name>
+    <name>CordovaAPI</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -15,7 +15,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-	<gap:plugin name="com.performanceactive.plugins.camera" version="1.3" />
+	<gap:plugin name="org.apache.cordova.camera" version="0.2.3" />
 </widget>
 
 
