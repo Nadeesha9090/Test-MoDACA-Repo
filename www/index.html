@@ -1,130 +1,46 @@
-<!-- ********************* HMTL5 Skeleton begin *********************** --> 
-<!DOCTYPE html> 
-<html> 
-<head> 
-<meta charset="utf-8" /> 
-<meta name="format-detection" content="telephone=no" /> 
-<!-- WARNING from Cordova: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 --> 
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> 
-<title>Cordova APIs</title>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title></title>
 
-<style type="text/css">
-.buttonClass {
-border-radius:8px; background-color:#fff;
-border:#878787 solid 1px; padding:0 1em;margin:.5em;
-height: 3em; width: 46%;
-font-family: "Helvetica"; color: #000; font-size:1em; text-align:center;
--webkit-appearance:none;
-}
-.segment {
-display:block; border-radius:8px; background-color:#eee;
-border:#878787 solid 1px; padding:1em; margin:.5em;
-font-family: "Helvetica"; color: #000; font-size:1.3em; text-align:left;
--webkit-appearance:none;
-}
-@media screen and (max-width:700px) {
-.buttonClass { width: 100%;}
-}
-</style>
- <script type="text/javascript" src="cordova.js"></script> 
-</head> 
+ <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+ <script type="text/javascript" src="cordova.js"></script>
+ <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+ <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+ <script type="text/javascript" src="js/iscroll.js"></script> 
+
+</head>
+
 <body>
-<!-- ********************* Camera begin *********************** --> 
-<div class="segment"><h2>Camera</h2>
- <p><em>Shoot photo with camera and display as thumbnail on this page.</em></p>
 
- <input type="button" class="buttonClass" onclick="capturePhotoEdit();" value="Capture Photo"> <br><input type="button" class="buttonClass" onclick="removeImages();" value="Remove thumbnail"><br> 
- <img style="display:none;width:60px;height:60px;" id="smallImage" src="">
- <p id="smTitle"></p>
- <p><em>Display the captured photo from gallery on this page:</em></p>
- <input type="button" class="buttonClass" value="Browse Gallery" onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><br>
- <input type="button" class="buttonClass" onclick="removeLargeImage();" value="Remove below image"><br> 
- <img style="display:none;" id="largeImage" src="">
+	<!-- Home -->
+	<div data-role="page" id="page1">
+		
+		
+	<div data-role="header" data-position="inline" data-theme="b">
+			
+			<h1>MoDACA Mobile Menu</h1>
+			
+		</div>
+		
+	<div data-role="content">
+		<div class="content-primary">	
+			<ul data-role="listview" data-filter="true">
+				<li><a href="login.html">Login</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="initialData.html">Initial Data</a></li>
+				<li><a href="createHouseholdProfile.html">Create Household Profile</a></li>
+				<li><a href="addHealthIssue.html">Add Health Issue</a></li>
+				<li><a href="addDeterminants.html">Add Determinants</a></li>
+				<li><a href="calculateBMI.html">Calculate BMI</a></li>
+			</ul>
+			</div><!--/content-primary -->	
+		</div>
 
-<p>&nbsp;</p>
-<input type="button" class="buttonClass" onclick='window.location="http://iphonedevlog.wordpress.com/2014/01/31/adding-cordova-apis-to-android-via-cli-accelerometer-and-camera/"' value="View Code On iPhoneDevLog">
-</div>
 
-<script type="text/javascript" charset="utf-8">
-
- var pictureSource; // picture source
- var destinationType; // sets the format of returned value
-
- // Wait for device API libraries to load
- document.addEventListener("deviceready",onDeviceReady,false);
-
- // device APIs are available
- function onDeviceReady() {
- pictureSource=navigator.camera.PictureSourceType;
- destinationType=navigator.camera.DestinationType;
- }
-
-// ---------------- CAMERA
-
-// STEP 2. Show thumbnail
- function onPhotoFileSuccess(imageData) {
- var note = document.getElementById('smTitle');
- note.innerHTML = "Image location:<br>" + JSON.stringify(imageData); // put name of file onscreen
- var smallImage = document.getElementById('smallImage');
- smallImage.style.display = 'block';
- smallImage.src = imageData; // Show thumbnail
- }
-
-// STEP 1. Capture photo.
- function capturePhotoEdit() {
- navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 90, destinationType: Camera.DestinationType.FILE_URI,
- sourceType : Camera.PictureSourceType.CAMERA, 
- allowEdit : true,
- encodingType: Camera.EncodingType.JPEG,
- // targetWidth: 200, // capture it at this size
- // targetHeight: 200, // capture it at this size
- popoverOptions: CameraPopoverOptions,
- saveToPhotoAlbum: true // saves photo to internal memory, viewed in Gallery
- });
- }
- 
-// ---------------- PHOTO GALLERY
-
- // STEP b. Called when a photo is successfully retrieved - gallery
- function onPhotoURISuccess(imageURI) {
- // Get image handle
- var largeImage = document.getElementById('largeImage');
- // Unhide image elements
- largeImage.style.display = 'block';
- // Show the captured photo
- largeImage.src = imageURI;
- navigator.camera.cleanup( cameraSuccess, cameraError );
- }
-
- // STEP a. A button will call this function
- function getPhoto(source) {
- // Retrieve image file location from specified source
- navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
- destinationType: destinationType.FILE_URI,
- sourceType: source });
- }
- 
-// ---------------- REMOVE IMAGES
-
- function removeImages() {
- var smallImage = document.getElementById('smallImage');
- smallImage.style.display = 'none';
- smallImage = null;
- }
- 
- function removeLargeImage() {
- var largeImage = document.getElementById('largeImage');
- largeImage.style.display = 'none';
- largeImage = null;
- }
-
- // Called if something bad happens.
- function onFail(message) {
- alert('Response: ' + message);
- }
- </script>
-
-<!-- ********************* Camera end *********************** -->
-</body> 
-</html> 
-<!-- ********************* HMTL5 Skeleton end *********************** -->
+</body>
+</html>
