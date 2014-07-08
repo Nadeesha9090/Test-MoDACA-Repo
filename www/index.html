@@ -227,7 +227,7 @@ function populateDB(tx) {
  document.getElementById("output").innerHTML = "\nPLEASE ENTER DATA"; return false; 
  }
  tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL, data4 TEXT NULL, data5 TEXT NULL, data6 TEXT NULL, data7 TEXT NULL, data8 TEXT NULL, data9 TEXT NULL)'); 
- tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4, data5, data6, data7, data8) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\", \"' + formdata5Get + '\", \"' + formdata6Get + '\", \"' + formdata7Get + '\", \"' + formdata8Get + '\", \"' + formdata9Get + '\")');
+ tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4, data5, data6, data7, data8, data9) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\", \"' + formdata5Get + '\", \"' + formdata6Get + '\", \"' + formdata7Get + '\", \"' + formdata8Get + '\", \"' + formdata9Get + '\")');
  queryDB(tx);
 }
 
