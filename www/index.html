@@ -3,21 +3,67 @@
 <head>
 <title>User-generated DB (PG Storage Example)</title>
 <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
-   	 <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
-	 <link rel="stylesheet" href="css/table.css">
-	 <script type="text/javascript" src="cordova.js"></script>
-	 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-	 <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
-	 <script type="text/javascript" src="js/register.js"></script> 
-	 <script type="text/javascript" src="js/iscroll.js"></script> 
+ <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+<script type="text/javascript" charset="utf-8">
 
-	 <script type="text/javascript" charset="utf-8">
-
-		function onDeviceReady() { 
-		 persistData(data1, data2, data3, data4);
-		}
-	</script>
-
+function onDeviceReady() { 
+ persistData(data1, data2, data3);
+}
+</script>
+<style type="text/css">
+.buttonClass, h2, p, .inputClass, #output, td {
+ font-family: "Helvetica"; color: #000; font-size:1em; 
+}
+h2 {
+ font-size:1.3em; font-weight: bold;
+}
+.buttonClass, .inputClass, #output, .buttonDel {
+ border-radius:8px; 
+ border:#878787 solid 1px; padding:.5em 1em;margin:.5em;
+ -webkit-appearance:none;
+} 
+.buttonClass, .inputClass, #output {
+ width: 46%;
+} 
+.buttonDel {
+ background-color: #faa;
+}
+.buttonClass {
+ text-align: center; height: 3em; background-color:#fff;
+}
+.inputClass {
+ text-align: left; height: 2em; background-color:#ffe; width:90%; 
+} 
+#output {
+ text-align: left; height: auto; background-color:#ffe; width:90%; 
+}
+.segment {
+ display:block; border-radius:8px; background-color:#eee;
+ border:#878787 solid 1px; padding:1em; margin:.5em;
+ -webkit-appearance:none; 
+ height: auto; 
+}
+table {
+ width:100%;
+}
+td {
+ font-size:.8em;
+ padding: .5em;
+ width:25%;
+ border:1px gray solid;
+ overflow:auto;
+ line-height:1em; 
+ border-radius: 4px;
+ background-color: #fff;
+}
+.headercell {
+ text-align:center;
+ font-weight:bold;
+}
+@media screen and (max-width:800px) {
+ .buttonClass { width: 100%;}
+}
+</style>
 </head>
 <body>
 <div class="segment">
@@ -25,37 +71,31 @@
  <input type="button" class="buttonClass" onclick='window.location="index.html"' value="Return">
 
  <form id="userInput" action ="" method="GET"> 
- 			<div class="fname" data-role="fieldcontain">
-				<label for="fname"> Home ID </label> 
-				<input name="fname" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
-			</div>
-			
-			<div class="lname" data-role="fieldcontain">
-				<label for="lname"> Owner </label> 
-				<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
-			</div>
-			
-			<div class="age" data-role="fieldcontain">
-				<label for="age"> Contact No </label> 
-				<input name="age" class="inputClass" id="data3" placeholder="071-9545-073" value="" type="number">
-			</div>
-			<div data-role="fieldcontain">
-				<label for="select-choice-1" class="select">GramaNiladhari Division</label>
-				<select name="select-choice-GNW" class="inputClass" id="data4">
-					<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
-					<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
-					<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
-					<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
-				</select>
-			</div>
- <br><br>
- <input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
+	<div data-role="content">
+		
+		<div class="fname" data-role="fieldcontain">
+			<label for="fname"> Home ID </label> 
+			<input name="fname" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
+		</div>
+		
+		<div class="lname" data-role="fieldcontain">
+			<label for="lname"> Owner </label> 
+			<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
+		</div>
+		
+		<div class="age" data-role="fieldcontain">
+			<label for="age"> Contact No </label> 
+			<input name="age" class="inputClass" id="data3" placeholder="071-9545-073" value="" type="number">
+		</div>
+		<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
+		
+	 </div>
  </form>
 
  <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
 
 <!-- insert query results here, text-only -->
- <textarea id="output" rows="60" placeholder="Results displayed here"></textarea> 
+ <textarea id="output" rows="15" placeholder="Results displayed here"></textarea> 
 
  <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
 
@@ -79,7 +119,6 @@ function persistData(data1, data2, data3) {
  var formdata1 = form.data1.value;
  var formdata2 = form.data2.value;
  var formdata3 = form.data3.value;
- var formdata3 = form.data4.value;
 // set value if input was blank
  if (formdata1 === "undefined") { formdata1 = "" }; 
  if (formdata2 === "undefined") { formdata2 = "" };
@@ -88,12 +127,10 @@ function persistData(data1, data2, data3) {
  console.log("data1 = " + formdata1); 
  console.log("data2 = " + formdata2);
  console.log("data3 = " + formdata3);
- console.log("data4 = " + formdata4);
 // key, value pair into localStorage
  localStorage.setItem('formdata1Set', formdata1); 
  localStorage.setItem('formdata2Set', formdata2); 
  localStorage.setItem('formdata3Set', formdata3);
- localStorage.setItem('formdata4Set', formdata4);
 // set the current time as the id to make it unique id
  var d = new Date();
  var new_id = d.getTime();
@@ -113,14 +150,13 @@ function populateDB(tx) {
  var formdata1Get = localStorage.getItem('formdata1Set'); // get data from localStorage
  var formdata2Get = localStorage.getItem('formdata2Set');
  var formdata3Get = localStorage.getItem('formdata3Set');
- var formdata4Get = localStorage.getItem('formdata4Set');
  var new_idGet = localStorage.getItem('new_idSet');
 // if no data has been entered, show note and stop the process
  if (formdata1Get.length < 1 && formdata2Get.length < 1 && formdata3Get.length < 1) { 
  document.getElementById("output").innerHTML = "\nPLEASE ENTER DATA"; return false; 
  }
- tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL, data4 TEXT NULL)'); 
- tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\")');
+ tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL)'); 
+ tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\")');
  queryDB(tx);
 }
 
@@ -143,8 +179,7 @@ function querySuccess(tx, results) {
  document.getElementById("output").innerHTML += "\nID = " + results.rows.item(i).id +
  "\ndata1 = " + results.rows.item(i).data1 +
  "\ndata2 = " + results.rows.item(i).data2 +
- "\ndata3 = " + results.rows.item(i).data3 + 
- "\ndata3 = " + results.rows.item(i).data4 +"\n";
+ "\ndata3 = " + results.rows.item(i).data3 + "\n";
  
 // Display the query results as a table within <div id="output2"></div>
  document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + "</td><td>" + results.rows.item(i).data3 + "</td></tr></table>";
