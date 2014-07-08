@@ -194,7 +194,6 @@ function querySuccess(tx, results) {
  console.log("Returned rows = " + results.rows.length);
 // set output, output2 to blank so values are not appended to previous values
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
 // loop through rows as many times as there are row results
  for (var i = 0; i < len; i++) { 
  var rowid = results.rows.item(i).id;
@@ -204,12 +203,10 @@ function querySuccess(tx, results) {
  "\ndata2 = " + results.rows.item(i).data2 +
  "\ndata3 = " + results.rows.item(i).data3 +
  "\ndata4 = " + results.rows.item(i).data4 +
- "\ndata5 = " + results.rows.item(i).data5 + "\n";
+ "\ndata5 = " + results.rows.item(i).data5 + 
+ "<button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button>"+"\n";
  
-// Display the query results as a table within <div id="output2"></div>
- document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
- "</td><td>" + results.rows.item(i).data3 + "</td></td>","</td><td>" + results.rows.item(i).data4 + "</td></td>","</td><td>" + results.rows.item(i).data5 + "</td></tr></table>";
- console.log("rowid = " + rowid); 
+
  }
 // reset form input fields to blank
  var form = document.getElementById("userInput"); 
@@ -240,7 +237,6 @@ function delRecord(rowid) {
  }
  ); 
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
  location.reload(false); // refresh page to show changes
 }
 
@@ -293,7 +289,6 @@ function dropDb() {
  form.data4.value = "";
  form.data5.value = "";
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
 // start the "drop database" sequence
  var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
  db.transaction(dropDatabase, errorCB, successCB);
