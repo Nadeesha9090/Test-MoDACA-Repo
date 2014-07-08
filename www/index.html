@@ -83,9 +83,14 @@ td {
 			<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
 		</div>
 		
-		<div class="age" data-role="fieldcontain">
-			<label for="age"> Contact No </label> 
-			<input name="age" class="inputClass" id="data3" placeholder="071-9545-073" value="" type="number">
+		<div data-role="fieldcontain">
+				<label for="select-choice-1" class="select">GramaNiladhari Division</label>
+				<select name="select-choice-GNW" class="inputClass" id="data3">
+					<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
+					<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
+					<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
+					<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
+				</select>
 		</div>
 		<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
 		
