@@ -198,18 +198,16 @@
 			 </form>
 		 </div>
 
-		<div class="ui-body ui-body-a">
-			<label for="name">Read well:</label>	
-			<q><em>Please read below information  and make sure that the information You entered is correct.If not press the pink colour button and delete the record</em></q>
-		</div>
+	 <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
+
 	<!-- insert query results here, text-only -->
 	 <label id="output" rows="15" placeholder="Results displayed here"></label> 
 
-		<div class="ui-body ui-body-a">
-			<label for="name">Read well:</label>
-			<input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
-		</div>
-	
+	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
+
+	<!-- insert query results here as table rows --> 
+	 <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
+	 <div id="output2"></div>
 
 	 
 	</div>
