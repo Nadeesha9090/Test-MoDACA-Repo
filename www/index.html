@@ -7,7 +7,7 @@
 <script type="text/javascript" charset="utf-8">
 
 function onDeviceReady() { 
- persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9);
+ persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10);
 }
 </script>
 <style type="text/css">
@@ -129,6 +129,11 @@ td {
 		</div>
 		
 		<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
+		
+		<div data-role="fieldcontain">
+	         <label for="name">No of Babies:</label>
+	         <input type="text" name="babies" class="inputClass" id="data10" value=""  />
+		</div>
 			
 		<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
 		
@@ -156,7 +161,7 @@ Perhaps get it from: http://rickharrison.github.io/validate.js/ */
 
 // set form field input
 
-function persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9) {
+function persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10) {
 // get form entries
  var form = document.getElementById("userInput"); 
  var formdata1 = form.data1.value;
@@ -168,6 +173,7 @@ function persistData(data1, data2, data3, data4, data5, data6, data7, data8, dat
  var formdata7 = form.data7.value;
  var formdata8 = form.data8.value;
  var formdata9 = form.data9.value;
+ var formdata10 = form.data10.value;
 // set value if input was blank
  if (formdata1 === "undefined") { formdata1 = "" }; 
  if (formdata2 === "undefined") { formdata2 = "" };
@@ -178,6 +184,7 @@ function persistData(data1, data2, data3, data4, data5, data6, data7, data8, dat
  if (formdata7 === "undefined") { formdata7 = "" };
  if (formdata8 === "undefined") { formdata8 = "" };
  if (formdata9 === "undefined") { formdata9 = "" };
+ if (formdata10 === "undefined") { formdata10 = "" };
 // check form entries on console
  console.log("data1 = " + formdata1); 
  console.log("data2 = " + formdata2);
@@ -188,6 +195,7 @@ function persistData(data1, data2, data3, data4, data5, data6, data7, data8, dat
  console.log("data7 = " + formdata7);
  console.log("data8 = " + formdata8);
  console.log("data9 = " + formdata9);
+ console.log("data10 = " + formdata10);
 // key, value pair into localStorage
  localStorage.setItem('formdata1Set', formdata1); 
  localStorage.setItem('formdata2Set', formdata2); 
@@ -198,6 +206,7 @@ function persistData(data1, data2, data3, data4, data5, data6, data7, data8, dat
  localStorage.setItem('formdata7Set', formdata7);
  localStorage.setItem('formdata8Set', formdata8);
  localStorage.setItem('formdata9Set', formdata9);
+ localStorage.setItem('formdata10Set', formdata10);
 // set the current time as the id to make it unique id
  var d = new Date();
  var new_id = d.getTime();
@@ -223,13 +232,14 @@ function populateDB(tx) {
  var formdata7Get = localStorage.getItem('formdata7Set');
  var formdata8Get = localStorage.getItem('formdata8Set');
  var formdata9Get = localStorage.getItem('formdata9Set');
+ var formdata10Get = localStorage.getItem('formdata10Set');
  var new_idGet = localStorage.getItem('new_idSet');
 // if no data has been entered, show note and stop the process
  if (formdata1Get.length < 1 && formdata2Get.length < 1 && formdata3Get.length < 1) { 
  document.getElementById("output").innerHTML = "\nPLEASE ENTER DATA"; return false; 
  }
- tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL, data4 TEXT NULL, data5 TEXT NULL, data6 TEXT NULL, data7 TEXT NULL, data8 TEXT NULL, data9 TEXT NULL)'); 
- tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4, data5, data6, data7, data8, data9) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\", \"' + formdata5Get + '\", \"' + formdata6Get + '\", \"' + formdata7Get + '\", \"' + formdata8Get + '\", \"' + formdata9Get + '\")');
+ tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL, data4 TEXT NULL, data5 TEXT NULL, data6 TEXT NULL, data7 TEXT NULL, data8 TEXT NULL, data9 TEXT NULL, data10 TEXT NULL)'); 
+ tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\", \"' + formdata5Get + '\", \"' + formdata6Get + '\", \"' + formdata7Get + '\", \"' + formdata8Get + '\", \"' + formdata9Get + '\", \"' + formdata10Get + '\")');
  queryDB(tx);
 }
 
@@ -258,12 +268,13 @@ function querySuccess(tx, results) {
  "\ndata6 = " + results.rows.item(i).data6 +
  "\ndata7 = " + results.rows.item(i).data7 +
  "\ndata8 = " + results.rows.item(i).data8 +
- "\ndata8 = " + results.rows.item(i).data9 +"\n";
+ "\ndata9 = " + results.rows.item(i).data9 +
+ "\ndata10= " + results.rows.item(i).data10 +"\n";
  
 // Display the query results as a table within <div id="output2"></div>
  document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
  "</td><td>" + results.rows.item(i).data3 + "</td></td>","</td><td>" + results.rows.item(i).data4 + "</td></td>","</td><td>" + results.rows.item(i).data5 + "</td></td>","</td><td>" + results.rows.item(i).data6 + "</td></td>","</td><td>" + results.rows.item(i).data7 +
- "</td></td>","</td><td>" + results.rows.item(i).data8 + "</td></td>","</td><td>" + results.rows.item(i).data9 + "</td></tr></table>";
+ "</td></td>","</td><td>" + results.rows.item(i).data8 + "</td></td>","</td><td>" + results.rows.item(i).data9 + "</td></td>","</td><td>" + results.rows.item(i).data10 + "</td></tr></table>";
  console.log("rowid = " + rowid); 
  }
 // reset form input fields to blank
@@ -277,6 +288,7 @@ function querySuccess(tx, results) {
  form.data7.value = ""; 
  form.data8.value = ""; 
  form.data9.value = ""; 
+ form.data10.value = ""; 
 }
 
 // Show DB onload (next two functions)
@@ -355,6 +367,7 @@ function dropDb() {
  form.data7.value = "";
  form.data8.value = "";
  form.data9.value = "";
+ form.data10.value = "";
  document.getElementById("output").innerHTML = "";
  document.getElementById("output2").innerHTML = "";
 // start the "drop database" sequence
