@@ -78,117 +78,125 @@
 </head>
 
 <body>
-	<div class="segment">
-		<h2>Storage, user-entry DB</h2>
-		<input type="button" class="buttonClass" onclick='window.location="index.html"' value="Return">
-
-		 <form id="userInput" action ="" method="GET"> 
-			<div data-role="content">
-				
-				
-				<div class="homeId" data-role="fieldcontain">
-					<label for="homeId"> Home ID </label> 
-					<input name="homeId" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
-				</div>
-				
-				
-				<div class="lname" data-role="fieldcontain">
-					<label for="lname"> Owner </label> 
-					<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
-				</div>
-				
-				
-				
-				<div data-role="fieldcontain">
-						<label for="select-choice-1" class="select">GramaNiladhari Division</label>
-						<select name="select-choice-GNW" class="inputClass" id="data3">
-							<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
-							<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
-							<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
-							<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
-						</select>
-				</div>
-				
-				
-				<div class="age" data-role="fieldcontain">
-					<label for="age"> Contact No </label> 
-					<input name="age" class="inputClass" id="data4" placeholder="071-9545-073" value="" type="number">
-				</div>
-				
-				
-				<div data-role="fieldcontain">
-					<label for="textarea">Address:</label>
-					<textarea cols="40" rows="8" name="address" class="inputClass" id="data5"></textarea>
-				</div>
-				
-				
-				<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
-				
-				
-				<div data-role="fieldcontain">
-						<label for="select-choice-1" class="select">Race</label>
-						<select name="select-choice-R" class="inputClass" id="data6">
-							<option value=" Sinhalese"> Sinhalese</option>
-							<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
-							<option value=" Moors"> Moors</option>
-							<option value=" Indian Tamils "> Indian Tamils </option>
-							<option value=" Malays "> Malays </option>
-							<option value=" Burghers ">  Burghers </option>
-							
-						</select>
-				</div>
-				
-				
-				<div data-role="fieldcontain">
-					 <label for="name">Income Rs:</label>
-					 <input type="text" name="income" class="inputClass" id="data7" value=""  />
-				</div>
-				
-				
-				<div data-role="fieldcontain">
-					 <label for="name">No of Members:</label>
-					 <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
-				</div>
-				
-				
-				<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Family Members</button></div>
-				
-				
-				
-				<div data-role="fieldcontain">
-					 <label for="name">No of Pregnent Mother:</label>
-					 <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
-				</div>
-				
-				
-				
-				<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
-				
-				
-				<div data-role="fieldcontain">
-					 <label for="name">No of Babies:</label>
-					 <input type="text" name="babies" class="inputClass" id="data10" value=""  />
-				</div>
-				
-				
-				<div class="ui-body ui-body-b">
-				<label for="name">Consumptions:</label>
-							<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Oil</button></div>
-							<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Salt</button></div>
-							<div class="ui-block-b"><button type="submit"  data-icon="plus"data-theme="a">Flaour</button></div>
-				</div>
-				
-				
-				<div data-role="fieldcontain">
-						<label for="textarea">Notes:</label>
-						<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
-				</div>
-				
+	<div data-role="page" id="page1">
+		<!--/header-->	
+		<div data-role="header" data-position="inline" data-theme="b">
+		
+			<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+			<h1>Registration</h1>
+			<a href="index.html" data-icon="home">Menu</a>
+			
+		</div>
+		<!--/header-->
+		<div id="wrapper">
+			 <form id="userInput" action ="" method="GET"> 
+				<div data-role="content">
 					
-				<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
-				
-			 </div>
-		 </form>
+					
+					<div class="homeId" data-role="fieldcontain">
+						<label for="homeId"> Home ID </label> 
+						<input name="homeId" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
+					</div>
+					
+					
+					<div class="lname" data-role="fieldcontain">
+						<label for="lname"> Owner </label> 
+						<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
+					</div>
+					
+					
+					
+					<div data-role="fieldcontain">
+							<label for="select-choice-1" class="select">GramaNiladhari Division</label>
+							<select name="select-choice-GNW" class="inputClass" id="data3">
+								<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
+								<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
+								<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
+								<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
+							</select>
+					</div>
+					
+					
+					<div class="age" data-role="fieldcontain">
+						<label for="age"> Contact No </label> 
+						<input name="age" class="inputClass" id="data4" placeholder="071-9545-073" value="" type="number">
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						<label for="textarea">Address:</label>
+						<textarea cols="40" rows="8" name="address" class="inputClass" id="data5"></textarea>
+					</div>
+					
+					
+					<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
+					
+					
+					<div data-role="fieldcontain">
+							<label for="select-choice-1" class="select">Race</label>
+							<select name="select-choice-R" class="inputClass" id="data6">
+								<option value=" Sinhalese"> Sinhalese</option>
+								<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
+								<option value=" Moors"> Moors</option>
+								<option value=" Indian Tamils "> Indian Tamils </option>
+								<option value=" Malays "> Malays </option>
+								<option value=" Burghers ">  Burghers </option>
+								
+							</select>
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">Income Rs:</label>
+						 <input type="text" name="income" class="inputClass" id="data7" value=""  />
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Members:</label>
+						 <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
+					</div>
+					
+					
+					<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Family Members</button></div>
+					
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Pregnent Mother:</label>
+						 <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
+					</div>
+					
+					
+					
+					<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Babies:</label>
+						 <input type="text" name="babies" class="inputClass" id="data10" value=""  />
+					</div>
+					
+					
+					<div class="ui-body ui-body-a">
+					<label for="name">Consumptions:</label>
+								<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Oil</button></div>
+								<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Salt</button></div>
+								<div class="ui-block-b"><button type="submit"  data-icon="plus"data-theme="a">Flaour</button></div>
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+							<label for="textarea">Notes:</label>
+							<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
+					</div>
+					
+						
+					<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
+					
+				 </div>
+			 </form>
+		 </div>
 
 	 <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
 
