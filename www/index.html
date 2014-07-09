@@ -323,17 +323,17 @@ function querySuccess(tx, results) {
  for (var i = 0; i < len; i++) { 
  var rowid = results.rows.item(i).id;
 // Display the query results within <textarea id="output"></textarea>
- document.getElementById("output").innerHTML += "\nID = " + results.rows.item(i).id +
- "\ndata1 = " + results.rows.item(i).data1 +
- "\ndata2 = " + results.rows.item(i).data2 +
- "\ndata3 = " + results.rows.item(i).data3 +
- "\ndata4 = " + results.rows.item(i).data4 +
- "\ndata5 = " + results.rows.item(i).data5 + 
- "\ndata6 = " + results.rows.item(i).data6 +
- "\ndata7 = " + results.rows.item(i).data7 +
- "\ndata8 = " + results.rows.item(i).data8 +
- "\ndata9 = " + results.rows.item(i).data9 +
- "\ndata10= " + results.rows.item(i).data10 +
+ document.getElementById("output").innerHTML += "\nID = " + results.rows.item(i).id +"<br>"+
+ "\ndata1 = " + results.rows.item(i).data1 +"<br>"+
+ "\ndata2 = " + results.rows.item(i).data2 +"<br>"+
+ "\ndata3 = " + results.rows.item(i).data3 +"<br>"+
+ "\ndata4 = " + results.rows.item(i).data4 +"<br>"+
+ "\ndata5 = " + results.rows.item(i).data5 +"<br>"+
+ "\ndata6 = " + results.rows.item(i).data6 +"<br>"+
+ "\ndata7 = " + results.rows.item(i).data7 +"<br>"+
+ "\ndata8 = " + results.rows.item(i).data8 +"<br>"+
+ "\ndata9 = " + results.rows.item(i).data9 +"<br>"+
+ "\ndata10= " + results.rows.item(i).data10 +"<br>"+
  "\ndata11= " + results.rows.item(i).data11 +"\n";
  
 // Display the query results as a table within <div id="output2"></div>
