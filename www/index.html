@@ -334,7 +334,7 @@ function querySuccess(tx, results) {
  "\ndata8 = " + results.rows.item(i).data8 +"<br>"+
  "\ndata9 = " + results.rows.item(i).data9 +"<br>"+
  "\ndata10= " + results.rows.item(i).data10 +"<br>"+
- "\ndata11= " + results.rows.item(i).data11 +"\n";
+ "\ndata11= " + results.rows.item(i).data11 +"\n"+"<br><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br><br><br>"+;
  
 // Display the query results as a table within <div id="output2"></div>
  document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
