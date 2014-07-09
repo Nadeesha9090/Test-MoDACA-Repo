@@ -191,10 +191,9 @@
 							<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
 					</div>
 					
-					<div class="ui-body ui-body-b">
-					<label for="name">Danger Zone:</label>	
+						
 					<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
-					</div>
+					
 				 </div>
 			 </form>
 		 </div>
@@ -203,9 +202,11 @@
 
 	<!-- insert query results here, text-only -->
 	 <label id="output" rows="15" placeholder="Results displayed here"></label> 
-
+	 
+	<div class="ui-body ui-body-b">
+					<label for="name">Danger Zone:</label>
 	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
-
+	</div>
 	<!-- insert query results here as table rows --> 
 	<!-- <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
 	 <div id="output2"></div>-->
