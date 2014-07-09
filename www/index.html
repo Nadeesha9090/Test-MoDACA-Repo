@@ -206,8 +206,8 @@
 	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
 
 	<!-- insert query results here as table rows --> 
-	 <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
-	 <div id="output2"></div>
+	<!-- <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
+	 <div id="output2"></div>-->
 
 	 
 	</div>
@@ -318,7 +318,7 @@ function querySuccess(tx, results) {
  console.log("Returned rows = " + results.rows.length);
 // set output, output2 to blank so values are not appended to previous values
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
+////// document.getElementById("output2").innerHTML = "";
 // loop through rows as many times as there are row results
  for (var i = 0; i < len; i++) { 
  var rowid = results.rows.item(i).id;
@@ -337,10 +337,10 @@ function querySuccess(tx, results) {
  "\ndata11= " + results.rows.item(i).data11 +"\n"+"<br><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br><br><br>";
  
 // Display the query results as a table within <div id="output2"></div>
- document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
- "</td><td>" + results.rows.item(i).data3 + "</td></td>","</td><td>" + results.rows.item(i).data4 + "</td></td>","</td><td>" + results.rows.item(i).data5 + "</td></td>","</td><td>" + results.rows.item(i).data6 + "</td></td>","</td><td>" + results.rows.item(i).data7 +
+ /****document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
+"</td><td>" + results.rows.item(i).data3 + "</td></td>","</td><td>" + results.rows.item(i).data4 + "</td></td>","</td><td>" + results.rows.item(i).data5 + "</td></td>","</td><td>" + results.rows.item(i).data6 + "</td></td>","</td><td>" + results.rows.item(i).data7 +
  "</td></td>","</td><td>" + results.rows.item(i).data8 + "</td></td>","</td><td>" + results.rows.item(i).data9 + "</td></td>","</td><td>" + results.rows.item(i).data10 + "</td></td>","</td><td>" + results.rows.item(i).data11 + "</td></tr></table>";
- console.log("rowid = " + rowid); 
+ console.log("rowid = " + rowid); */
  }
 // reset form input fields to blank
  var form = document.getElementById("userInput"); 
@@ -377,7 +377,7 @@ function delRecord(rowid) {
  }
  ); 
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
+ /*document.getElementById("output2").innerHTML = "";*/
  location.reload(false); // refresh page to show changes
 }
 
@@ -436,7 +436,7 @@ function dropDb() {
  form.data10.value = "";
  form.data11.value = "";
  document.getElementById("output").innerHTML = "";
- document.getElementById("output2").innerHTML = "";
+ /*document.getElementById("output2").innerHTML = "";*/
 // start the "drop database" sequence
  var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
  db.transaction(dropDatabase, errorCB, successCB);
