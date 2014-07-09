@@ -154,7 +154,7 @@
 					
 					<div data-role="fieldcontain">
 						 <label for="name">No of Members:</label>
-						 <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
+						 <input type="number" name="fmembers" class="inputClass" id="data8" value=""  />
 					</div>
 					
 					
@@ -164,7 +164,7 @@
 					
 					<div data-role="fieldcontain">
 						 <label for="name">No of Pregnent Mother:</label>
-						 <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
+						 <input type="number" name="pmothers" class="inputClass" id="data9" value=""  />
 					</div>
 					
 					
@@ -174,7 +174,7 @@
 					
 					<div data-role="fieldcontain">
 						 <label for="name">No of Babies:</label>
-						 <input type="text" name="babies" class="inputClass" id="data10" value=""  />
+						 <input type="number" name="babies" class="inputClass" id="data10" value=""  />
 					</div>
 					
 					
@@ -198,16 +198,18 @@
 			 </form>
 		 </div>
 
-	 <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
-
+		<div class="ui-body ui-body-a">
+			<label for="name">Read well:</label>	
+			<q><em>Please read below information  and make sure that the information You entered is correct.If not press the pink colour button and delete the record</em></q>
+		</div>
 	<!-- insert query results here, text-only -->
 	 <label id="output" rows="15" placeholder="Results displayed here"></label> 
 
-	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
-
-	<!-- insert query results here as table rows --> 
-	 <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
-	 <div id="output2"></div>
+		<div class="ui-body ui-body-b">
+			<label for="name">Danger Zone:</label>
+			<input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
+		</div>
+	
 
 	 
 	</div>
@@ -324,17 +326,17 @@ function querySuccess(tx, results) {
  var rowid = results.rows.item(i).id;
 // Display the query results within <textarea id="output"></textarea>
  document.getElementById("output").innerHTML += "\nID = " + results.rows.item(i).id +"<br>"+
- "\ndata1 = " + results.rows.item(i).data1 +"<br>"+
- "\ndata2 = " + results.rows.item(i).data2 +"<br>"+
- "\ndata3 = " + results.rows.item(i).data3 +"<br>"+
- "\ndata4 = " + results.rows.item(i).data4 +"<br>"+
- "\ndata5 = " + results.rows.item(i).data5 +"<br>"+
- "\ndata6 = " + results.rows.item(i).data6 +"<br>"+
- "\ndata7 = " + results.rows.item(i).data7 +"<br>"+
- "\ndata8 = " + results.rows.item(i).data8 +"<br>"+
- "\ndata9 = " + results.rows.item(i).data9 +"<br>"+
- "\ndata10= " + results.rows.item(i).data10 +"<br>"+
- "\ndata11= " + results.rows.item(i).data11 +"\n"+"<br><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br><br><br>";
+ "\nHome ID ; " + results.rows.item(i).data1 +"<br>"+
+ "\nOwner : " + results.rows.item(i).data2 +"<br>"+
+ "\nGramaNiladhari Division : " + results.rows.item(i).data3 +"<br>"+
+ "\nContact No : " + results.rows.item(i).data4 +"<br>"+
+ "\nAddress : " + results.rows.item(i).data5 +"<br>"+
+ "\nRace :" + results.rows.item(i).data6 +"<br>"+
+ "\nIncome Rs : " + results.rows.item(i).data7 +"<br>"+
+ "\nNo of Members : " + results.rows.item(i).data8 +"<br>"+
+ "\nNo of Pregnent Mother : " + results.rows.item(i).data9 +"<br>"+
+ "\nNo of Babies:" + results.rows.item(i).data10 +"<br>"+
+ "\nNotes : " + results.rows.item(i).data11 +"\n"+"<br><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br><br><br>";
  
 // Display the query results as a table within <div id="output2"></div>
  document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
