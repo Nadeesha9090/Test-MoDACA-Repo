@@ -1,170 +1,208 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>User-generated DB (PG Storage Example)</title>
-<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
-<script type="text/javascript" charset="utf-8">
+	<title>Household Profile DB storage</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	 <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+	 <link rel="stylesheet" href="css/table.css">
+	 <script type="text/javascript" src="cordova.js"></script>
+	 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	 <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	 <script type="text/javascript" src="js/register.js"></script> 
+	 <script type="text/javascript" src="js/iscroll.js"></script> 
+	  
+	<script type="text/javascript" charset="utf-8">
 
-function onDeviceReady() { 
- persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11);
-}
-</script>
-<style type="text/css">
-.buttonClass, h2, p, .inputClass, #output, td {
- font-family: "Helvetica"; color: #000; font-size:1em; 
-}
-h2 {
- font-size:1.3em; font-weight: bold;
-}
-.buttonClass, .inputClass, #output, .buttonDel {
- border-radius:8px; 
- border:#878787 solid 1px; padding:.5em 1em;margin:.5em;
- -webkit-appearance:none;
-} 
-.buttonClass, .inputClass, #output {
- width: 46%;
-} 
-.buttonDel {
- background-color: #faa;
-}
-.buttonClass {
- text-align: center; height: 3em; background-color:#fff;
-}
-.inputClass {
- text-align: left; height: 2em; background-color:#ffe; width:90%; 
-} 
-#output {
- text-align: left; height: auto; background-color:#ffe; width:90%; 
-}
-.segment {
- display:block; border-radius:8px; background-color:#eee;
- border:#878787 solid 1px; padding:1em; margin:.5em;
- -webkit-appearance:none; 
- height: auto; 
-}
-table {
- width:100%;
-}
-td {
- font-size:.8em;
- padding: .5em;
- width:25%;
- border:1px gray solid;
- overflow:auto;
- line-height:1em; 
- border-radius: 4px;
- background-color: #fff;
-}
-.headercell {
- text-align:center;
- font-weight:bold;
-}
-@media screen and (max-width:800px) {
- .buttonClass { width: 100%;}
-}
-</style>
+		function onDeviceReady() { 
+		 persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11);
+		}
+	</script>
+	<style type="text/css">
+		.buttonClass, h2, p, .inputClass, #output, td {
+		 font-family: "Helvetica"; color: #000; font-size:1em; 
+		}
+		h2 {
+		 font-size:1.3em; font-weight: bold;
+		}
+		.buttonClass, .inputClass, #output, .buttonDel {
+		 border-radius:8px; 
+		 border:#878787 solid 1px; padding:.5em 1em;margin:.5em;
+		 -webkit-appearance:none;
+		} 
+		.buttonClass, .inputClass, #output {
+		 width: 46%;
+		} 
+		.buttonDel {
+		 background-color: #faa;
+		}
+		.buttonClass {
+		 text-align: center; height: 3em; background-color:#fff;
+		}
+		.inputClass {
+		 text-align: left; height: 2em; background-color:#ffe; width:90%; 
+		} 
+		#output {
+		 text-align: left; height: auto; background-color:#ffe; width:90%; 
+		}
+		.segment {
+		 display:block; border-radius:8px; background-color:#eee;
+		 border:#878787 solid 1px; padding:1em; margin:.5em;
+		 -webkit-appearance:none; 
+		 height: auto; 
+		}
+		table {
+		 width:100%;
+		}
+		td {
+		 font-size:.8em;
+		 padding: .5em;
+		 width:25%;
+		 border:1px gray solid;
+		 overflow:auto;
+		 line-height:1em; 
+		 border-radius: 4px;
+		 background-color: #fff;
+		}
+		.headercell {
+		 text-align:center;
+		 font-weight:bold;
+		}
+		@media screen and (max-width:800px) {
+		 .buttonClass { width: 100%;}
+	}
+	</style>
 </head>
+
 <body>
-<div class="segment">
- <h2>Storage, user-entry DB</h2>
- <input type="button" class="buttonClass" onclick='window.location="index.html"' value="Return">
+	<div class="segment">
+		<h2>Storage, user-entry DB</h2>
+		<input type="button" class="buttonClass" onclick='window.location="index.html"' value="Return">
 
- <form id="userInput" action ="" method="GET"> 
-	<div data-role="content">
-		
-		<div class="homeId" data-role="fieldcontain">
-			<label for="homeId"> Home ID </label> 
-			<input name="homeId" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
-		</div>
-		
-		<div class="lname" data-role="fieldcontain">
-			<label for="lname"> Owner </label> 
-			<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
-		</div>
-		
-		<div data-role="fieldcontain">
-				<label for="select-choice-1" class="select">GramaNiladhari Division</label>
-				<select name="select-choice-GNW" class="inputClass" id="data3">
-					<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
-					<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
-					<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
-					<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
-				</select>
-		</div>
-		<div class="age" data-role="fieldcontain">
-			<label for="age"> Contact No </label> 
-			<input name="age" class="inputClass" id="data4" placeholder="071-9545-073" value="" type="number">
-		</div>
-		<div data-role="fieldcontain">
-			<label for="textarea">Address:</label>
-			<textarea cols="40" rows="8" name="address" class="inputClass" id="data5"></textarea>
-		</div>
-		<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
-		<div data-role="fieldcontain">
-				<label for="select-choice-1" class="select">Race</label>
-				<select name="select-choice-GNW" class="inputClass" id="data6">
-					<option value=" Sinhalese"> Sinhalese</option>
-					<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
-					<option value=" Moors"> Moors</option>
-					<option value=" Indian Tamils "> Indian Tamils </option>
-					<option value=" Malays "> Malays </option>
-					<option value=" Burghers ">  Burghers </option>
+		 <form id="userInput" action ="" method="GET"> 
+			<div data-role="content">
+				
+				
+				<div class="homeId" data-role="fieldcontain">
+					<label for="homeId"> Home ID </label> 
+					<input name="homeId" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
+				</div>
+				
+				
+				<div class="lname" data-role="fieldcontain">
+					<label for="lname"> Owner </label> 
+					<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
+				</div>
+				
+				
+				
+				<div data-role="fieldcontain">
+						<label for="select-choice-1" class="select">GramaNiladhari Division</label>
+						<select name="select-choice-GNW" class="inputClass" id="data3">
+							<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
+							<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
+							<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
+							<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
+						</select>
+				</div>
+				
+				
+				<div class="age" data-role="fieldcontain">
+					<label for="age"> Contact No </label> 
+					<input name="age" class="inputClass" id="data4" placeholder="071-9545-073" value="" type="number">
+				</div>
+				
+				
+				<div data-role="fieldcontain">
+					<label for="textarea">Address:</label>
+					<textarea cols="40" rows="8" name="address" class="inputClass" id="data5"></textarea>
+				</div>
+				
+				
+				<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
+				
+				
+				<div data-role="fieldcontain">
+						<label for="select-choice-1" class="select">Race</label>
+						<select name="select-choice-R" class="inputClass" id="data6">
+							<option value=" Sinhalese"> Sinhalese</option>
+							<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
+							<option value=" Moors"> Moors</option>
+							<option value=" Indian Tamils "> Indian Tamils </option>
+							<option value=" Malays "> Malays </option>
+							<option value=" Burghers ">  Burghers </option>
+							
+						</select>
+				</div>
+				
+				
+				<div data-role="fieldcontain">
+					 <label for="name">Income Rs:</label>
+					 <input type="text" name="income" class="inputClass" id="data7" value=""  />
+				</div>
+				
+				
+				<div data-role="fieldcontain">
+					 <label for="name">No of Members:</label>
+					 <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
+				</div>
+				
+				
+				<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Family Members</button></div>
+				
+				
+				
+				<div data-role="fieldcontain">
+					 <label for="name">No of Pregnent Mother:</label>
+					 <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
+				</div>
+				
+				
+				
+				<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
+				
+				
+				<div data-role="fieldcontain">
+					 <label for="name">No of Babies:</label>
+					 <input type="text" name="babies" class="inputClass" id="data10" value=""  />
+				</div>
+				
+				
+				<div class="ui-body ui-body-b">
+				<label for="name">Consumptions:</label>
+							<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Oil</button></div>
+							<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Salt</button></div>
+							<div class="ui-block-b"><button type="submit"  data-icon="plus"data-theme="a">Flaour</button></div>
+				</div>
+				
+				
+				<div data-role="fieldcontain">
+						<label for="textarea">Notes:</label>
+						<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
+				</div>
+				
 					
-				</select>
-		</div>
-		<div data-role="fieldcontain">
-	         <label for="name">Income Rs:</label>
-	         <input type="text" name="income" class="inputClass" id="data7" value=""  />
-		</div>
-		<div data-role="fieldcontain">
-	         <label for="name">No of Members:</label>
-	         <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
-		</div>
-		<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Family Members</button></div>
-		
-		<div data-role="fieldcontain">
-	         <label for="name">No of Pregnent Mother:</label>
-	         <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
-		</div>
-		
-		<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
-		
-		<div data-role="fieldcontain">
-	         <label for="name">No of Babies:</label>
-	         <input type="text" name="babies" class="inputClass" id="data10" value=""  />
-		</div>
-		
-		<div class="ui-body ui-body-b">
-		<label for="name">Consumptions:</label>
-					<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Oil</button></div>
-					<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Salt</button></div>
-					<div class="ui-block-b"><button type="submit"  data-icon="plus"data-theme="a">Flaour</button></div>
-		</div>
-		
-		<div data-role="fieldcontain">
-				<label for="textarea">Notes:</label>
-				<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
-		</div>
-			
-		<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
-		
-	 </div>
- </form>
+				<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
+				
+			 </div>
+		 </form>
 
- <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
+	 <p><em>Press and hold on the text to copy and export. To scroll contents, tap in field and wait for keyboard, then scroll.</em></p>
 
-<!-- insert query results here, text-only -->
- <textarea id="output" rows="15" placeholder="Results displayed here"></textarea> 
+	<!-- insert query results here, text-only -->
+	 <textarea id="output" rows="15" placeholder="Results displayed here"></textarea> 
 
- <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
+	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
 
-<!-- insert query results here as table rows --> 
- <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
- <div id="output2"></div>
+	<!-- insert query results here as table rows --> 
+	 <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
+	 <div id="output2"></div>
 
- <input type="button" class="buttonClass" onclick='window.location="http://iphonedevlog.wordpress.com/2014/03/21/cordova-websql-database-with-user-added-data/"' value="View Code on iPhoneDevLog">
-</div>
+	 
+	</div>
 
 <script>
 
