@@ -9,7 +9,7 @@
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
     
-    <name>JSON_Test</name>
+    <name>JSON_Test-02</name>
     <description>
         How to use JSON with Local Storages.
     </description>
