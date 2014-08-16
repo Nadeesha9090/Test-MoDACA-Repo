@@ -1,21 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.stevehusting.CordovaAPI"
-		 version="0.0.1"
-		 xmlns="http://www.w3.org/ns/widgets" 
-		 
-		 xmlns:cdv="http://cordova.apache.org/ns/1.0"
-		 xmlns:gap   = "http://phonegap.com/ns/1.0">
-		 
-    <name>Storage-JSON</name>
+<widget id="com.stevehusting.JSON_Test" 
+        version="0.0.1" 
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    
+    
+<feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    
+    <name>JSON_Test</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        How to use JSON with Local Storages.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
-	<gap:plugin name="org.apache.cordova.camera" version="0.2.3" />
+    
+	<!---<feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>-->
+    
 </widget>
-
 

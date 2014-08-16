@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Household Profile DB storage</title>
+	
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no,
+                                       initial-scale=1, maximum-scale=1,
+                                       minimum-scale=1,width=device-width" />
+    
+	
+	 <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+	 <link rel="stylesheet" href="css/table.css">
+   
+	 
+	 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	 <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	 
+	 <script type="text/javascript" src="js/iscroll.js"></script> 
+	  
+	<script type="text/javascript" charset="utf-8">
+        function onDeviceReady() { 
+		 persistData(homeId,owner,gramaND,contactNo,address,race);
+		}
+        function saveLocal(form){
+            if (window.localStorage) {
+                
+                var fhomeId = form.homeId.value,
+                    fowner = form.owner.value,
+                    fgramaND = form.gramaND.value,
+                    fcontactNo= form.contactNo.value,
+                    faddress = form.address.value,
+                    frace = form.race.value;
+                        
+                  
+                        
+                        
+                alert("hi");
+                var highscores = [{"homeId": fhomeId,
+                                   "owner":fowner,
+                                   "gramaND":fgramaND,
+                                   "contactNo":fcontactNo,
+                                   "address":faddress,
+                                   "race":frace}];
+                localStorage.setItem("highscores",JSON.stringify(highscores));
+               
+                alert("The data has been stored successfully.");
+            } else {
+                alert("Your Browser does not support LocalStorage.");
+            }
+        }
+
+        function readLocal(){
+            if (window.localStorage) {
+            
+
+                //Get the highscores object
+                var scores = localStorage.getItem("highscores");
+                scores = JSON.parse(scores);
+                for (i=0;i<scores.length;i++){
+                    
+                   /* var dhomeId = document.getElementById("dhomeId");
+                    var downer = document.getElementById("downer");
+                    var dgramaND = document.getElementById("dgramaND");
+                    var dcontactNo = document.getElementById("dcontactNo");
+                    var daddress = document.getElementById("daddress");
+                    var drace = document.getElementById("drace");
+                    
+                   
+                   dhomeId.innerHTML = "homeId :"+scores[i].homeId ;
+                    downer.innerHTML = "owner:"+ scores[i].owner ;
+                    daddress.innerHTML = "address"+scores[i].address ;
+                    dgramaND.innerHTML = "gramaND"+scores[i].gramaND ;
+                    dcontactNo.innerHTML = "contactNo"+scores[i].contactNo ;
+                    
+                    drace.innerHTML = "race"+scores[i].race ;*/
+                    
+                    var text = "homeId :"+scores[i].homeId +"<br>"+
+                                "owner:"+ scores[i].owner+"<br>"+
+                                "address"+scores[i].address +"<br>"+
+                                "gramaND"+scores[i].gramaND +"<br>"+
+                                "contactNo"+scores[i].contactNo+"<br>" +
+                                '<Button value="DELETE" onclick="'+scores.splice(i, 0)+'><>/Button>';
+                    
+                    
+                            var tbodyx = document.getElementsByTagName("tbody");
+                            var tr=document.createElement("TR");
+                            var td=document.createElement("TD");
+                            td.innerHTML = text;
+                            tr.appendChild(td);
+                            tbody.appendChild(tr);
+                       
+                 
+                }
+            }
+        }
+	</script>
+
+</head>
+
+<body>
+    <div data-role="page" id="page1">
+		<!--/header-->	
+		<div data-role="header" data-position="inline" data-theme="b">
+		
+			<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+			<h1>Household Profile</h1>
+			<a href="index.html" data-icon="home">Menu</a>
+			
+		</div>
+		<!--/header-->
+        
+		<div id="wrapper">
+			 <form id="userInput" action ="" method="GET"> 
+				<div data-role="content">
+					
+					
+					<div data-role="fieldcontain">
+						<label > Home ID </label> 
+						<input class="inputClass" id="homeId" placeholder="H0001" value="" data-mini="true" type="text">
+					</div>
+					
+					
+					<div  data-role="fieldcontain">
+						<label > Owner </label> 
+						<input class="inputClass" id="owner" placeholder="Aberathne" value="" type="text">
+					</div>
+					
+										
+					<div data-role="fieldcontain">
+							<label  class="select">GramaNiladhari Division</label>
+							<select class="inputClass" id="gramaND">
+								<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
+								<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
+								<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
+								<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
+							</select>
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						<label > Contact No </label> 
+						<input  class="inputClass" id="contactNo" placeholder="071-9545-073" value="" type="number">
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						<label >Address:</label>
+						<textarea cols="40" rows="8"  class="inputClass" id="address"></textarea>
+					</div>
+					
+					
+					<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
+					
+					
+					<div data-role="fieldcontain">
+							<label  >Race</label>
+							<select  class="inputClass" id="race">
+								<option value=" Sinhalese"> Sinhalese</option>
+								<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
+								<option value=" Moors"> Moors</option>
+								<option value=" Indian Tamils "> Indian Tamils </option>
+								<option value=" Malays "> Malays </option>
+								<option value=" Burghers ">  Burghers </option>
+								
+							</select>
+					</div>
+					
+					<input class="buttonClass" type="button" value="Insert Data" onclick="saveLocal(this.form);">
+					
+				 </div>
+			 </form>
+		 </div>
+
+        <input class="buttonClass" type="button" value="get Data" onclick="readLocal();">
+      <!--  <p id="dhomeId"></p>
+        <p id="downer"></p>
+        <p id="dgramaND"></p>
+        <p id="dcontactNo"></p>
+        <p id="daddress"></p>
+        <p id="drace"></p>-->
+        
+        
+      
+        <table border="1">
+            <tbody id="tbody">
+                <tr><td>test1</td></tr>
+                <tr><td>test2</td></tr>
+            </tbody>
+        </table>
+        
+
+
+	 
+	</div>
+
+
+</body>
+</html>
+<!-- ********************* HMTL5 Storage end *********************** -->
