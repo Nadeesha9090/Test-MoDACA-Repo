@@ -1,130 +1,456 @@
-<!-- ********************* HMTL5 Skeleton begin *********************** --> 
-<!DOCTYPE html> 
-<html> 
-<head> 
-<meta charset="utf-8" /> 
-<meta name="format-detection" content="telephone=no" /> 
-<!-- WARNING from Cordova: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 --> 
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> 
-<title>Cordova APIs</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Household Profile DB storage</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	 <link rel="stylesheet" href="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css">
+	 <link rel="stylesheet" href="css/table.css">
+	 <script type="text/javascript" src="cordova.js"></script>
+	 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	 <script type="text/javascript" src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	 <script type="text/javascript" src="js/register.js"></script> 
+	 <script type="text/javascript" src="js/iscroll.js"></script> 
+	  
+	<script type="text/javascript" charset="utf-8">
 
-<style type="text/css">
-.buttonClass {
-border-radius:8px; background-color:#fff;
-border:#878787 solid 1px; padding:0 1em;margin:.5em;
-height: 3em; width: 46%;
-font-family: "Helvetica"; color: #000; font-size:1em; text-align:center;
--webkit-appearance:none;
-}
-.segment {
-display:block; border-radius:8px; background-color:#eee;
-border:#878787 solid 1px; padding:1em; margin:.5em;
-font-family: "Helvetica"; color: #000; font-size:1.3em; text-align:left;
--webkit-appearance:none;
-}
-@media screen and (max-width:700px) {
-.buttonClass { width: 100%;}
-}
-</style>
- <script type="text/javascript" src="cordova.js"></script> 
-</head> 
+		function onDeviceReady() { 
+		 persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11);
+		}
+	</script>
+	<style type="text/css">
+		.buttonClass, h2, p, .inputClass, #output, td {
+		 font-family: "Helvetica"; color: #000; font-size:1em; 
+		}
+		h2 {
+		 font-size:1.3em; font-weight: bold;
+		}
+		.buttonClass, .inputClass, #output, .buttonDel {
+		 border-radius:8px; 
+		 border:#878787 solid 1px; padding:.5em 1em;margin:.5em;
+		 -webkit-appearance:none;
+		} 
+		.buttonClass, .inputClass, #output {
+		 width: 46%;
+		} 
+		.buttonDel {
+		 background-color: #faa;
+		}
+		.buttonClass {
+		 text-align: center; height: 3em; background-color:#fff;
+		}
+		.inputClass {
+		 text-align: left; height: 2em; background-color:#ffe; width:90%; 
+		} 
+		#output {
+		 text-align: left; height: auto; background-color:#ffe; width:90%; 
+		}
+		.segment {
+		 display:block; border-radius:8px; background-color:#eee;
+		 border:#878787 solid 1px; padding:1em; margin:.5em;
+		 -webkit-appearance:none; 
+		 height: auto; 
+		}
+		table {
+		 width:100%;
+		}
+		td {
+		 font-size:.8em;
+		 padding: .5em;
+		 width:25%;
+		 border:1px gray solid;
+		 overflow:auto;
+		 line-height:1em; 
+		 border-radius: 4px;
+		 background-color: #fff;
+		}
+		.headercell {
+		 text-align:center;
+		 font-weight:bold;
+		}
+		@media screen and (max-width:800px) {
+		 .buttonClass { width: 100%;}
+	}
+	</style>
+</head>
+
 <body>
-<!-- ********************* Camera begin *********************** --> 
-<div class="segment"><h2>Camera</h2>
- <p><em>Shoot photo with camera and display as thumbnail on this page.</em></p>
+	<div data-role="page" id="page1">
+		<!--/header-->	
+		<div data-role="header" data-position="inline" data-theme="b">
+		
+			<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+			<h1>Household Profile</h1>
+			<a href="index.html" data-icon="home">Menu</a>
+			
+		</div>
+		<!--/header-->
+		<div id="wrapper">
+			 <form id="userInput" action ="" method="GET"> 
+				<div data-role="content">
+					
+					
+					<div class="homeId" data-role="fieldcontain">
+						<label for="homeId"> Home ID </label> 
+						<input name="homeId" class="inputClass" id="data1" placeholder="H0001" value="" data-mini="true" type="text">
+					</div>
+					
+					
+					<div class="lname" data-role="fieldcontain">
+						<label for="lname"> Owner </label> 
+						<input name="lname"class="inputClass" id="data2" placeholder="Aberathne" value="" type="text">
+					</div>
+					
+					
+					
+					<div data-role="fieldcontain">
+							<label for="select-choice-1" class="select">GramaNiladhari Division</label>
+							<select name="select-choice-GNW" class="inputClass" id="data3">
+								<option value="GramaNiladhari Division 1">GramaNiladhari Division 1</option>
+								<option value="GramaNiladhari Division 2">GramaNiladhari Division 2</option>
+								<option value="GramaNiladhari Division 3">GramaNiladhari Division 3</option>
+								<option value="GramaNiladhari Division 4">GramaNiladhari Division 4</option>
+							</select>
+					</div>
+					
+					
+					<div class="age" data-role="fieldcontain">
+						<label for="age"> Contact No </label> 
+						<input name="age" class="inputClass" id="data4" placeholder="071-9545-073" value="" type="number">
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						<label for="textarea">Address:</label>
+						<textarea cols="40" rows="8" name="address" class="inputClass" id="data5"></textarea>
+					</div>
+					
+					
+					<div class="ui-block-a"><button type="submit" data-theme="d">Location in a Map</button></div>
+					
+					
+					<div data-role="fieldcontain">
+							<label for="select-choice-1" class="select">Race</label>
+							<select name="select-choice-R" class="inputClass" id="data6">
+								<option value=" Sinhalese"> Sinhalese</option>
+								<option value=" Sri Lanka Tamils"> Sri Lanka Tamils</option>
+								<option value=" Moors"> Moors</option>
+								<option value=" Indian Tamils "> Indian Tamils </option>
+								<option value=" Malays "> Malays </option>
+								<option value=" Burghers ">  Burghers </option>
+								
+							</select>
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">Income Rs:</label>
+						 <input type="text" name="income" class="inputClass" id="data7" value=""  />
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Members:</label>
+						 <input type="text" name="fmembers" class="inputClass" id="data8" value=""  />
+					</div>
+					
+					
+					<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Family Members</button></div>
+					
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Pregnent Mother:</label>
+						 <input type="text" name="pmothers" class="inputClass" id="data9" value=""  />
+					</div>
+					
+					
+					
+					<div class="ui-block-a"><button type="submit" data-icon="plus" data-theme="d">Add Pregnent Mother</button></div>
+					
+					
+					<div data-role="fieldcontain">
+						 <label for="name">No of Babies:</label>
+						 <input type="text" name="babies" class="inputClass" id="data10" value=""  />
+					</div>
+					
+					
+					<div class="ui-body ui-body-a">
+					<label for="name">Consumptions:</label>
+								<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Oil</button></div>
+								<div class="ui-block-b"><button type="submit" data-icon="plus" data-theme="a">Salt</button></div>
+								<div class="ui-block-b"><button type="submit"  data-icon="plus"data-theme="a">Flaour</button></div>
+					</div>
+					
+					
+					<div data-role="fieldcontain">
+							<label for="textarea">Notes:</label>
+							<textarea cols="40" rows="30" name="notes" class="inputClass" id="data11"></textarea>
+					</div>
+					
+						
+					<input class="buttonClass" type="button" value="Insert Data" onclick="persistData(this.form)">
+					
+				 </div>
+			 </form>
+		 </div>
 
- <input type="button" class="buttonClass" onclick="capturePhotoEdit();" value="Capture Photo"> <br><input type="button" class="buttonClass" onclick="removeImages();" value="Remove thumbnail"><br> 
- <img style="display:none;width:60px;height:60px;" id="smallImage" src="">
- <p id="smTitle"></p>
- <p><em>Display the captured photo from gallery on this page:</em></p>
- <input type="button" class="buttonClass" value="Browse Gallery" onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><br>
- <input type="button" class="buttonClass" onclick="removeLargeImage();" value="Remove below image"><br> 
- <img style="display:none;" id="largeImage" src="">
+	 <q><em>Please make sure the data you entered is correct if not click on pink color button an delete it.</em></q>
 
-<p>&nbsp;</p>
-<input type="button" class="buttonClass" onclick='window.location="http://iphonedevlog.wordpress.com/2014/01/31/adding-cordova-apis-to-android-via-cli-accelerometer-and-camera/"' value="View Code On iPhoneDevLog">
-</div>
+	<!-- insert query results here, text-only -->
+	 <label id="output" rows="15" placeholder="Results displayed here"></label> 
+	 
+	<div class="ui-body ui-body-b">
+					<label for="name">Danger Zone:</label>
+	 <input type="button" class="buttonClass" style="background-color: #faa;" onclick='dropDb();' value="Delete Database">
+	</div>
+	<!-- insert query results here as table rows --> 
+	<!-- <table><th><tr><td class="headercell">ID</td><td class="headercell">data1</td><td class="headercell">data2</td><td class="headercell">data3</td></tr></th></table>
+	 <div id="output2"></div>-->
 
-<script type="text/javascript" charset="utf-8">
+	 
+	</div>
 
- var pictureSource; // picture source
- var destinationType; // sets the format of returned value
+<script>
 
- // Wait for device API libraries to load
- document.addEventListener("deviceready",onDeviceReady,false);
+/* IMPORTANT! for increased security, add form validation (not used on this page). 
+Perhaps get it from: http://rickharrison.github.io/validate.js/ */
 
- // device APIs are available
- function onDeviceReady() {
- pictureSource=navigator.camera.PictureSourceType;
- destinationType=navigator.camera.DestinationType;
+// set form field input
+
+function persistData(data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11) {
+// get form entries
+ var form = document.getElementById("userInput"); 
+ var formdata1 = form.data1.value;
+ var formdata2 = form.data2.value;
+ var formdata3 = form.data3.value;
+ var formdata4 = form.data4.value;
+ var formdata5 = form.data5.value;
+ var formdata6 = form.data6.value;
+ var formdata7 = form.data7.value;
+ var formdata8 = form.data8.value;
+ var formdata9 = form.data9.value;
+ var formdata10 = form.data10.value;
+ var formdata11 = form.data11.value;
+// set value if input was blank
+ if (formdata1 === "undefined") { formdata1 = "" }; 
+ if (formdata2 === "undefined") { formdata2 = "" };
+ if (formdata3 === "undefined") { formdata3 = "" };
+ if (formdata4 === "undefined") { formdata4 = "" };
+ if (formdata5 === "undefined") { formdata5 = "" };
+ if (formdata6 === "undefined") { formdata6 = "" };
+ if (formdata7 === "undefined") { formdata7 = "" };
+ if (formdata8 === "undefined") { formdata8 = "" };
+ if (formdata9 === "undefined") { formdata9 = "" };
+ if (formdata10 === "undefined") { formdata10 = "" };
+ if (formdata11 === "undefined") { formdata11 = "" };
+// check form entries on console
+ console.log("data1 = " + formdata1); 
+ console.log("data2 = " + formdata2);
+ console.log("data3 = " + formdata3);
+ console.log("data4 = " + formdata4);
+ console.log("data5 = " + formdata5);
+ console.log("data6 = " + formdata6);
+ console.log("data7 = " + formdata7);
+ console.log("data8 = " + formdata8);
+ console.log("data9 = " + formdata9);
+ console.log("data10 = " + formdata10);
+ console.log("data11 = " + formdata11);
+// key, value pair into localStorage
+ localStorage.setItem('formdata1Set', formdata1); 
+ localStorage.setItem('formdata2Set', formdata2); 
+ localStorage.setItem('formdata3Set', formdata3);
+ localStorage.setItem('formdata4Set', formdata4);
+ localStorage.setItem('formdata5Set', formdata5);
+ localStorage.setItem('formdata6Set', formdata6);
+ localStorage.setItem('formdata7Set', formdata7);
+ localStorage.setItem('formdata8Set', formdata8);
+ localStorage.setItem('formdata9Set', formdata9);
+ localStorage.setItem('formdata10Set', formdata10);
+ localStorage.setItem('formdata11Set', formdata11);
+// set the current time as the id to make it unique id
+ var d = new Date();
+ var new_id = d.getTime();
+ localStorage.setItem('new_idSet', new_id);
+// proceed to next function
+ startDB(); 
+}
+
+function startDB() {
+ var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
+ db.transaction(populateDB, errorCB, successCB);
+}
+
+// Form the query
+
+function populateDB(tx) {
+ var formdata1Get = localStorage.getItem('formdata1Set'); // get data from localStorage
+ var formdata2Get = localStorage.getItem('formdata2Set');
+ var formdata3Get = localStorage.getItem('formdata3Set');
+ var formdata4Get = localStorage.getItem('formdata4Set');
+ var formdata5Get = localStorage.getItem('formdata5Set');
+ var formdata6Get = localStorage.getItem('formdata6Set');
+ var formdata7Get = localStorage.getItem('formdata7Set');
+ var formdata8Get = localStorage.getItem('formdata8Set');
+ var formdata9Get = localStorage.getItem('formdata9Set');
+ var formdata10Get = localStorage.getItem('formdata10Set');
+ var formdata11Get = localStorage.getItem('formdata11Set');
+ var new_idGet = localStorage.getItem('new_idSet');
+// if no data has been entered, show note and stop the process
+ if (formdata1Get.length < 1 && formdata2Get.length < 1 && formdata3Get.length < 1) { 
+ document.getElementById("output").innerHTML = "\nPLEASE ENTER DATA"; return false; 
  }
+ tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id TEXT NOT NULL, data1 TEXT NULL, data2 TEXT NULL, data3 TEXT NULL, data4 TEXT NULL, data5 TEXT NULL, data6 TEXT NULL, data7 TEXT NULL, data8 TEXT NULL, data9 TEXT NULL, data10 TEXT NULL, data11 TEXT NULL)'); 
+ tx.executeSql('INSERT INTO DEMO (id, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11) VALUES (\"' + new_idGet + '\"' + ', \"' + formdata1Get + '\", \"' + formdata2Get + '\", \"' + formdata3Get + '\", \"' + formdata4Get + '\", \"' + formdata5Get + '\", \"' + formdata6Get + '\", \"' + formdata7Get + '\", \"' +
+ formdata8Get + '\", \"' + formdata9Get + '\", \"' + formdata10Get + '\", \"' + formdata11Get + '\")');
+ queryDB(tx);
+}
 
-// ---------------- CAMERA
+// Execute the query, grabbing all the data
 
-// STEP 2. Show thumbnail
- function onPhotoFileSuccess(imageData) {
- var note = document.getElementById('smTitle');
- note.innerHTML = "Image location:<br>" + JSON.stringify(imageData); // put name of file onscreen
- var smallImage = document.getElementById('smallImage');
- smallImage.style.display = 'block';
- smallImage.src = imageData; // Show thumbnail
- }
+function queryDB(tx) {
+ tx.executeSql("SELECT * FROM DEMO", [], querySuccess, errorCB);
+}
 
-// STEP 1. Capture photo.
- function capturePhotoEdit() {
- navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 90, destinationType: Camera.DestinationType.FILE_URI,
- sourceType : Camera.PictureSourceType.CAMERA, 
- allowEdit : true,
- encodingType: Camera.EncodingType.JPEG,
- // targetWidth: 200, // capture it at this size
- // targetHeight: 200, // capture it at this size
- popoverOptions: CameraPopoverOptions,
- saveToPhotoAlbum: true // saves photo to internal memory, viewed in Gallery
- });
- }
+function querySuccess(tx, results) {
+ var len = results.rows.length;
+ console.log("Returned rows = " + results.rows.length);
+// set output, output2 to blank so values are not appended to previous values
+ document.getElementById("output").innerHTML = "";
+////// document.getElementById("output2").innerHTML = "";
+// loop through rows as many times as there are row results
+ for (var i = 0; i < len; i++) { 
+ var rowid = results.rows.item(i).id;
+// Display the query results within <textarea id="output"></textarea>
+ document.getElementById("output").innerHTML += "\nID = " + results.rows.item(i).id +"<br>"+
+ "\nHome ID = " + results.rows.item(i).data1 +"<br>"+
+ "\ndata2 = " + results.rows.item(i).data2 +"<br>"+
+ "\ndata3 = " + results.rows.item(i).data3 +"<br>"+
+ "\ndata4 = " + results.rows.item(i).data4 +"<br>"+
+ "\ndata5 = " + results.rows.item(i).data5 +"<br>"+
+ "\ndata6 = " + results.rows.item(i).data6 +"<br>"+
+ "\ndata7 = " + results.rows.item(i).data7 +"<br>"+
+ "\ndata8 = " + results.rows.item(i).data8 +"<br>"+
+ "\ndata9 = " + results.rows.item(i).data9 +"<br>"+
+ "\ndata10= " + results.rows.item(i).data10 +"<br>"+
+ "\ndata11= " + results.rows.item(i).data11 +"\n"+"<br><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br><br><br>";
  
-// ---------------- PHOTO GALLERY
-
- // STEP b. Called when a photo is successfully retrieved - gallery
- function onPhotoURISuccess(imageURI) {
- // Get image handle
- var largeImage = document.getElementById('largeImage');
- // Unhide image elements
- largeImage.style.display = 'block';
- // Show the captured photo
- largeImage.src = imageURI;
- navigator.camera.cleanup( cameraSuccess, cameraError );
+// Display the query results as a table within <div id="output2"></div>
+ /****document.getElementById("output2").innerHTML += "<table><tr><td><button class='buttonDel' onclick='delRecord(\"" + rowid + "\")' value='Delete'>Delete</button><br>" + results.rows.item(i).id + "</td><td>" + results.rows.item(i).data1 + "</td><td>" + results.rows.item(i).data2 + 
+"</td><td>" + results.rows.item(i).data3 + "</td></td>","</td><td>" + results.rows.item(i).data4 + "</td></td>","</td><td>" + results.rows.item(i).data5 + "</td></td>","</td><td>" + results.rows.item(i).data6 + "</td></td>","</td><td>" + results.rows.item(i).data7 +
+ "</td></td>","</td><td>" + results.rows.item(i).data8 + "</td></td>","</td><td>" + results.rows.item(i).data9 + "</td></td>","</td><td>" + results.rows.item(i).data10 + "</td></td>","</td><td>" + results.rows.item(i).data11 + "</td></tr></table>";
+ console.log("rowid = " + rowid); */
  }
+// reset form input fields to blank
+ var form = document.getElementById("userInput"); 
+ form.data1.value = "";
+ form.data2.value = "";
+ form.data3.value = ""; 
+ form.data4.value = ""; 
+ form.data5.value = ""; 
+ form.data6.value = ""; 
+ form.data7.value = ""; 
+ form.data8.value = ""; 
+ form.data9.value = ""; 
+ form.data10.value = ""; 
+ form.data11.value = ""; 
+}
 
- // STEP a. A button will call this function
- function getPhoto(source) {
- // Retrieve image file location from specified source
- navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
- destinationType: destinationType.FILE_URI,
- sourceType: source });
- }
- 
-// ---------------- REMOVE IMAGES
+// Show DB onload (next two functions)
 
- function removeImages() {
- var smallImage = document.getElementById('smallImage');
- smallImage.style.display = 'none';
- smallImage = null;
- }
- 
- function removeLargeImage() {
- var largeImage = document.getElementById('largeImage');
- largeImage.style.display = 'none';
- largeImage = null;
- }
+function showDB(tx) {
+ var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
+ db.transaction(createDB, errorCB, successCB);
+}
+function createDB(tx) {
+ tx.executeSql("SELECT * FROM DEMO", [], querySuccess, errorCB);
+}
 
- // Called if something bad happens.
- function onFail(message) {
- alert('Response: ' + message);
- }
- </script>
+// Delete a row in the DB from button
 
-<!-- ********************* Camera end *********************** -->
-</body> 
-</html> 
-<!-- ********************* HMTL5 Skeleton end *********************** -->
+function delRecord(rowid) {
+ var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
+ db.transaction(
+ function (tx) {
+ tx.executeSql("DELETE FROM demo WHERE id = ?", [rowid]);
+ }
+ ); 
+ document.getElementById("output").innerHTML = "";
+ /*document.getElementById("output2").innerHTML = "";*/
+ location.reload(false); // refresh page to show changes
+}
+
+// Transaction success callback
+
+function successCB() {
+ console.log("_______ Success! _______");
+}
+
+// Transaction error callback
+
+function errorCB(err) {
+ if (err.code == "0") {
+ console.log("0 - UNKNOWN_ERR: The transaction failed for reasons unrelated to the database itself and not covered by any other error code.");
+ }
+ if (err.code == "1") {
+ console.log("1 - DATABASE_ERR: The statement failed for database reasons not covered by any other error code.");
+ }
+ if (err.code == "2") {
+ console.log("2 - VERSION_ERR: The operation failed because the actual database version was not what it should be. For example, a statement found that the actual database version no longer matched the expected version of the Database or DatabaseSync object, or the Database.changeVersion() or DatabaseSync.changeVersion() methods were passed a version that doesn't match the actual database version.");
+ }
+ if (err.code == "3") {
+ console.log("3 - TOO_LARGE_ERR: The statement failed because the data returned from the database was too large. The SQL 'LIMIT' modifier might be useful to reduce the size of the result set.");
+ }
+ if (err.code == "4") {
+ console.log("4 - QUOTA_ERR: The statement failed because there was not enough remaining storage space, or the storage quota was reached and the user declined to give more space to the database.");
+ }
+ if (err.code == "5") {
+ console.log("5 - SYNTAX_ERR: The statement failed because of a syntax error, or the number of arguments did not match the number of ? placeholders in the statement, or the statement tried to use a statement that is not allowed, such as BEGIN, COMMIT, or ROLLBACK, or the statement tried to use a verb that could modify the database but the transaction was read-only.");
+ }
+ if (err.code == "6") {
+ console.log("6 - CONSTRAINT_ERR: An INSERT, UPDATE, or REPLACE statement failed due to a constraint failure. For example, because a row was being inserted and the value given for the primary key column duplicated the value of an existing row.");
+ }
+ if (err.code == "7") {
+ console.log("7 - TIMEOUT_ERR: A lock for the transaction could not be obtained in a reasonable time.");
+ }
+}
+
+
+// "drop (delete) database" sequence, next two functions
+
+function dropDb() {
+// erase localStorage
+ window.localStorage.clear();
+// erase form fields
+ var form = document.getElementById("userInput"); 
+ form.data1.value = "";
+ form.data2.value = "";
+ form.data3.value = "";
+ form.data4.value = "";
+ form.data5.value = "";
+ form.data6.value = "";
+ form.data7.value = "";
+ form.data8.value = "";
+ form.data9.value = "";
+ form.data10.value = "";
+ form.data11.value = "";
+ document.getElementById("output").innerHTML = "";
+ /*document.getElementById("output2").innerHTML = "";*/
+// start the "drop database" sequence
+ var db = window.openDatabase("Database", "1.0", "DEMO", 2000000);
+ db.transaction(dropDatabase, errorCB, successCB);
+}
+function dropDatabase(tx) {
+ tx.executeSql('DROP TABLE IF EXISTS DEMO');
+ console.log("_______ Table Dropped! _______");
+}
+
+// Show the DB contents on page load
+showDB(); 
+</script>
+</body>
+</html>
+<!-- ********************* HMTL5 Storage end *********************** -->
