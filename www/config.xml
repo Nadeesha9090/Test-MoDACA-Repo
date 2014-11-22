@@ -3,12 +3,12 @@
 <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <name>Storage API</name>
+    <name>MODACA Mobile</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+		MODACA Mobile for Health Promotion Units in Sri Lanka....!
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+        INNOVEX Team
     </author>
     <content src="index.html" />
     <access origin="*" />
